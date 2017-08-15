@@ -18,7 +18,10 @@ public class InputHandler implements Handler {
     }
 
     @Override
-    public boolean canHandle(String command) {
+    public boolean canHandle(String code) {
+        String[] literals = code.split(" ");
+        String command = literals[1];
+
         return "INPUT".equals(command);
     }
 }

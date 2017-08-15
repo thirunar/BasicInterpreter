@@ -1,9 +1,6 @@
 package com.sahaj.basic;
 
-import com.sahaj.basic.handlers.Handler;
-import com.sahaj.basic.handlers.InputHandler;
-import com.sahaj.basic.handlers.PrintHandler;
-import com.sahaj.basic.handlers.RemHandler;
+import com.sahaj.basic.handlers.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,15 +16,14 @@ public class Interpreter {
         handlers.add(new PrintHandler());
         handlers.add(new RemHandler());
         handlers.add(new InputHandler());
+        handlers.add(new AssignmentHandler());
         VARIABLES = new HashMap<>();
     }
 
     public void interpret(String code) {
-        String[] literals = code.split(" ");
-        String keyword = literals[1];
 
         for (Handler handler : handlers) {
-            if (handler.canHandle(keyword)) {
+            if (handler.canHandle(code)) {
                 handler.handle(code);
             }
         }

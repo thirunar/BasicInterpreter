@@ -4,5 +4,5 @@ public interface Handler {
 
     void handle(String line);
 
-    boolean canHandle(String command);
+    boolean canHandle(String code);
 }
